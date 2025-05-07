@@ -1,3 +1,104 @@
 {
-  "apps": []
+  "apps": {
+    "Browsers": [
+      {
+        "name": "Google Chrome",
+        "url": "https://dl.google.com/chrome/install/latest/chrome_installer.exe",
+        "install_args": "/silent /install",
+        "auto_update": false
+      },
+      {
+        "name": "Mozilla Firefox",
+        "url": "https://download.mozilla.org/?product=firefox-latest&os=win64&lang=en-US",
+        "install_args": "/S",
+        "auto_update": false
+      },
+      {
+        "name": "Brave Browser",
+        "url": "https://laptop-updates.brave.com/latest/winx64",
+        "install_args": "/silent /install",
+        "auto_update": false
+      }
+    ],
+    "Media": [
+      {
+        "name": "VLC Media Player",
+        "url": "https://get.videolan.org/vlc/3.0.20/win64/vlc-3.0.20-win64.exe",
+        "install_args": "/L=1033 /S",
+        "auto_update": false
+      },
+      {
+        "name": "Spotify",
+        "url": "https://download.scdn.co/SpotifySetup.exe",
+        "install_args": "/silent",
+        "auto_update": false
+      },
+      {
+        "name": "OBS Studio",
+        "url": "https://cdn-fastly.obsproject.com/downloads/OBS-Studio-30.0.2-Full-Installer-x64.exe",
+        "install_args": "/S",
+        "auto_update": false
+      }
+    ],
+    "Utilities": [
+      {
+        "name": "7-Zip",
+        "url": "https://www.7-zip.org/a/7z2301-x64.exe",
+        "install_args": "/S",
+        "auto_update": true
+      },
+      {
+        "name": "WinRAR",
+        "url": "https://www.rarlab.com/rar/winrar-x64-621.exe",
+        "install_args": "/S",
+        "auto_update": false
+      },
+      {
+        "name": "Everything Search",
+        "url": "https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe",
+        "install_args": "/S",
+        "auto_update": false
+      }
+    ],
+    "Dev Tools": [
+      {
+        "name": "Visual Studio Code",
+        "url": "https://update.code.visualstudio.com/latest/win32-x64-user/stable",
+        "install_args": "/silent /mergetasks=!runcode",
+        "auto_update": false
+      },
+      {
+        "name": "Git for Windows",
+        "url": "https://github.com/git-for-windows/git/releases/latest/download/Git-2.44.0-64-bit.exe",
+        "install_args": "/VERYSILENT",
+        "auto_update": false
+      },
+      {
+        "name": "Python 3.12",
+        "url": "https://www.python.org/ftp/python/3.12.2/python-3.12.2-amd64.exe",
+        "install_args": "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0",
+        "auto_update": false
+      },
+      {
+        "name": "Node.js LTS",
+        "url": "https://nodejs.org/dist/v20.11.1/node-v20.11.1-x64.msi",
+        "install_args": "/quiet",
+        "auto_update": false
+      }
+    ],
+    "Gaming & Social": [
+      {
+        "name": "Steam",
+        "url": "https://cdn.cloudflare.steamstatic.com/client/installer/SteamSetup.exe",
+        "install_args": "/S",
+        "auto_update": false
+      },
+      {
+        "name": "Discord",
+        "url": "https://discord.com/api/download?platform=win",
+        "install_args": "/S",
+        "auto_update": false
+      }
+    ]
+  }
 }
