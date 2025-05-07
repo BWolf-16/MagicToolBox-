@@ -1,5 +1,6 @@
 import json
 import os
+import requests
 import subprocess
 
 MANIFEST_PATH = os.path.join(os.path.dirname(__file__), '..', 'apps', 'manifest.json')
@@ -24,15 +25,18 @@ def load_apps_flat():
 
 def download_app(app):
     url = app.get("url")
-    filename = url.split("/")[-1].split("?")[0]  # remove query params
+    filename = url.split("/")[-1].split("?")[0]  # Remove query params
     filepath = os.path.join(DOWNLOAD_DIR, filename)
 
     try:
         print(f"[Download] {app['name']} from {url}")
-        subprocess.run(["wget", "-O", filepath, url], check=True)
+        response = requests.get(url, stream=True, timeout=30)
+        with open(filepath, "wb") as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
         return filepath
-    except subprocess.CalledProcessError:
-        print(f"[ERROR] Failed to download {app['name']}")
+    except requests.exceptions.RequestException as e:
+        print(f"[ERROR] Failed to download {app['name']}: {e}")
         return None
 
 def install_app(app):

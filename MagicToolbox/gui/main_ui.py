@@ -1,27 +1,30 @@
 import customtkinter as ctk
-from tkinter import ttk
 from tools import apps, android, system, dev
 from core import config as cfg
 from core import updater
 
 def run_ui():
-    ctk.set_appearance_mode("Dark")
-    ctk.set_default_color_theme("blue")
-
+    # Initialize the root window
     app = ctk.CTk()
     app.title("Magic Toolbox 🐾")
     app.geometry("900x600")
 
-    # Sidebar
+    ctk.set_appearance_mode("Dark")
+    ctk.set_default_color_theme("blue")
+
+    # Sidebar Frame
     sidebar = ctk.CTkFrame(app, width=180)
     sidebar.pack(side="left", fill="y", padx=10, pady=10)
 
+    # Main Frame for content
     main_frame = ctk.CTkFrame(app)
     main_frame.pack(side="left", expand=True, fill="both", padx=10, pady=10)
 
+    # Title
     title = ctk.CTkLabel(main_frame, text="Welcome to Magic Toolbox, Master 🖤", font=("Arial", 20))
     title.pack(pady=20)
 
+    # Tabs for navigation
     tabs = {
         "Apps": lambda: show_apps(main_frame),
         "Android": lambda: show_android(main_frame),
@@ -29,19 +32,27 @@ def run_ui():
         "Dev": lambda: show_dev(main_frame),
     }
 
+    # Create sidebar buttons (Tabs)
     for name, func in tabs.items():
         btn = ctk.CTkButton(sidebar, text=name, command=func)
         btn.pack(pady=10, fill="x")
 
+    # Start the Tkinter event loop
     app.mainloop()
 
 def clear_frame(frame):
+    # Safely clear all widgets from the frame
     for widget in frame.winfo_children():
-        widget.destroy()
+        try:
+            widget.destroy()
+        except Exception as e:
+            print(f"[Clear Frame] Failed to destroy widget: {e}")
 
 def show_apps(frame):
     clear_frame(frame)
     manifest = apps.load_apps_grouped()
+
+    # Title for App Manager
     ctk.CTkLabel(frame, text="App Manager", font=("Arial", 20)).pack(pady=10)
 
     def update_all():
@@ -53,6 +64,7 @@ def show_apps(frame):
 
     ctk.CTkButton(frame, text="🔁 Update All", command=update_all).pack(pady=10)
 
+    # Display Apps grouped by categories
     for category, app_list in manifest.items():
         category_label = ctk.CTkLabel(frame, text=f"📦 {category}", font=("Arial", 16, "bold"))
         category_label.pack(pady=(20, 5))
