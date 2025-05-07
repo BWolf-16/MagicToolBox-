@@ -1,10 +1,9 @@
 import customtkinter as ctk
-import threading
-import time
+
 
 def run_splash(callback=None):
     splash = ctk.CTk()
-    splash.title("Summoning Magic Toolbox...")
+    splash.title("Magic Toolbox - Loading")
     splash.geometry("500x300")
     splash.resizable(False, False)
 
@@ -21,14 +20,19 @@ def run_splash(callback=None):
 ＼二)
     """
 
-    label = ctk.CTkLabel(splash, text=banner, font=("Consolas", 14), justify="left")
-    label.pack(pady=30)
+    ctk.set_appearance_mode("Dark")
+    ctk.set_default_color_theme("blue")
 
-    def close_after_delay():
-        time.sleep(2.5)  # show splash for 2.5 seconds
+    label = ctk.CTkLabel(splash, text=banner, font=("Courier New", 16), justify="left")
+    label.pack(expand=True, padx=20, pady=20)
+
+    # Close splash after 2 seconds and call the callback (run_ui)
+    def on_close():
         splash.destroy()
         if callback:
-            callback()
+            callback()  # explicitly calling run_ui()
 
-    threading.Thread(target=close_after_delay).start()
+    # Set a timer for splash screen
+    splash.after(2000, on_close)
+
     splash.mainloop()

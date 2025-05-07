@@ -3,8 +3,17 @@ from tools import apps, android, system, dev
 from core import config as cfg
 from core import updater
 
+import customtkinter as ctk
+from tools import apps, android, system, dev
+from core import config as cfg
+from core import updater
+
+import customtkinter as ctk
+from tools import apps, android, system, dev
+from core import config as cfg
+from core import updater
+
 def run_ui():
-    # Initialize the root window
     app = ctk.CTk()
     app.title("Magic Toolbox 🐾")
     app.geometry("900x600")
@@ -12,19 +21,15 @@ def run_ui():
     ctk.set_appearance_mode("Dark")
     ctk.set_default_color_theme("blue")
 
-    # Sidebar Frame
     sidebar = ctk.CTkFrame(app, width=180)
     sidebar.pack(side="left", fill="y", padx=10, pady=10)
 
-    # Main Frame for content
     main_frame = ctk.CTkFrame(app)
     main_frame.pack(side="left", expand=True, fill="both", padx=10, pady=10)
 
-    # Title
     title = ctk.CTkLabel(main_frame, text="Welcome to Magic Toolbox, Master 🖤", font=("Arial", 20))
     title.pack(pady=20)
 
-    # Tabs for navigation
     tabs = {
         "Apps": lambda: show_apps(main_frame),
         "Android": lambda: show_android(main_frame),
@@ -32,12 +37,13 @@ def run_ui():
         "Dev": lambda: show_dev(main_frame),
     }
 
-    # Create sidebar buttons (Tabs)
     for name, func in tabs.items():
         btn = ctk.CTkButton(sidebar, text=name, command=func)
         btn.pack(pady=10, fill="x")
 
-    # Start the Tkinter event loop
+    # Automatically display apps tab initially
+    show_apps(main_frame)
+
     app.mainloop()
 
 def clear_frame(frame):
