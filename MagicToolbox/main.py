@@ -1,5 +1,5 @@
 from gui.splash import run_splash
-from gui.main_ui import run_ui
+from gui.main_ui import run_ui, show_apps
 from core.config import load_config
 from core.github_sync import sync_manifest
 
@@ -16,3 +16,6 @@ if __name__ == '__main__':
         run_splash(callback=run_ui)
     else:
         run_ui()
+
+    # After sync, call show_apps to refresh the app list
+    show_apps()  # Ensure app list is shown after syncing
