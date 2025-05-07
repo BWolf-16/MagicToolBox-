@@ -1,5 +1,11 @@
 {
-    "auto_update": {},
+    "auto_update": {
+        "Mozilla Firefox": false,
+        "Spotify": false,
+        "VLC Media Player": false,
+        "WinRAR": false,
+        "7-Zip": false
+    },
     "theme": "dark",
     "magic_mode": true,
     "auto_sync_manifest": true

@@ -18,4 +18,5 @@ if __name__ == '__main__':
         run_ui()
 
     # After sync, call show_apps to refresh the app list
-    show_apps()  # Ensure app list is shown after syncing
+    app_frame = run_ui()  # Get the frame after UI is loaded
+    show_apps(app_frame)  # Pass the main frame to show_apps
