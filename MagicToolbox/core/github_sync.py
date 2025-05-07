@@ -5,7 +5,7 @@ import os
 MANIFEST_PATH = os.path.join(os.path.dirname(__file__), '..', 'apps', 'manifest.json')
 
 # You can point this to your raw GitHub file
-GITHUB_MANIFEST_URL = "https://github.com/BWolf-16/MagicToolBox-/blob/main/MagicToolbox/apps/manifest.json"
+GITHUB_MANIFEST_URL = "https://raw.githubusercontent.com/BWolf-16/MagicToolBox-/main/MagicToolbox/apps/manifest.json"
 
 def fetch_remote_manifest():
     try:
